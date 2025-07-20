@@ -12,12 +12,13 @@ This guide is for you if:
 - You have a spare **Windows 10/11 PC or laptop** to run the Ark server
 - You have a **Google account** (needed for Google Cloud setup)
 
-### Overview: What You’ll Do
+### Table of Contents
 
-1. Create a **Google Cloud VM** with a static IP
-2. Set up **frp** (Fast Reverse Proxy) on the cloud VM and your local machine
-3. Install and run the **Ark: Survival Ascended dedicated server**
-4. Use a **batch script** to run both the proxy and server with one click (Optional)
+1. [Set Up Google Cloud Compute Engine](#set-up-google-cloud-compute-engine)
+2. [Install and Run frp on Google Cloud VM](#install-and-run-frp-on-google-cloud-vm)
+3. [Install and Run frp on Your Local Machine](#install-and-run-frp-on-your-local-machine)
+4. [Install and Run the Ark: Survival Ascended Dedicated Server](#install-and-run-the-ark-survival-ascended-dedicated-server)
+5. [Run frpc and the Ark: Survival Ascended Dedicated Server in One Click](#run-frpc-and-the-ark-survival-ascended-dedicated-server-in-one-click)
 
 # Set Up Google Cloud Compute Engine
 
