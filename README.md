@@ -9,12 +9,12 @@ A **strict NAT** assigns different external ports for each outgoing connection a
 This guide is for you if:
 
 - You want to host a dedicated Ark: Survival Ascended (ASA) server but are behind a **strict NAT** or otherwise **unable** to **port forward** to your local machine.
-- You have a **spare laptop or computer** available to run the ASA dedicated server on.
+- You have a spare **Windows 10/11** laptop or computer available to run the ASA dedicated server on.
 - You have a **Google account** and a **Steam account**.
 
 ## Setup Overview
 
-We will use **Google Cloud Compute Engine** to create a **Virtual Machine (VM)** and set up **[frp (Fast Reverse Proxy)](https://github.com/fatedier/frp)** to tunnel network traffic to your local machine.
+We will use **Google Cloud Compute Engine** to create a **Virtual Machine (VM)**, set up **[frp (Fast Reverse Proxy)](https://github.com/fatedier/frp)** to tunnel network traffic to your local machine and then set up the Ark: Survival Ascended dedicated server.
 
 ## Google Cloud Compute Setup
 
