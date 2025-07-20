@@ -94,7 +94,7 @@ This will allow you to tunnel Ark server ports from your local machine through t
 4. A terminal will open. You should see a prompt similar to:
 
    ```bash
-   yourusername@YOUR_VM_NAME:~$
+   username@YOUR_VM_NAME:~$
    ```
 
 ### 2 | Download frp
@@ -116,15 +116,20 @@ cd frp_0.63.0_linux_amd64
    - **Password:** `<password>` (for frp dashboard access)
    - **Token:** `<token>` (for securing the connection between client and server)
 
-2. Open the `frps.toml` configuration file in the nano editor:
+2. Open the `frps.toml` server configuration file in the nano editor:
 
    ```bash
    nano frps.toml
    ```
 
-3. Paste the contents of your prepared configuration file into the editor. Make sure to replace `<user>`, `<password>` and `<token>` with your generated values.
-   Use this template or replace it with your own:
-   **[frps.toml](https://github.com/dreamfarer/asa-server/blob/main/frps.toml)**
+3. Paste the contents of your prepared configuration file into the editor.
+   Make sure to replace:
+
+   - `<user>` with your generated username
+   - `<password>` with your generated password
+   - `<token>` with your generated token
+
+   Use this template or download the official example here: **[frps.toml](https://github.com/dreamfarer/asa-server/blob/main/frps.toml)**
 
 4. To save and exit nano:
 
@@ -141,6 +146,55 @@ Start **frps** with your new configuration:
 ```
 
 Your frp server is now running on your Google Cloud VM.
+
+## Set Up a systemd Service (Optional)
+
+In this section, we will set up a **systemd service** on your previously created VM instance.
+This is **optional**, but recommended because it ensures that **frps** starts automatically when your VM boots or restarts.
+
+### 1 | Create and Configure the systemd Service
+
+1. While still in the SSH terminal, if **frps** is currently running, stop it by pressing `CTRL + C`.
+
+2. Open the nano editor to create the systemd service file:
+
+   ```bash
+   sudo nano /etc/systemd/system/frps.service
+   ```
+
+3. Paste the following configuration into the editor.
+   **Replace `<username>`** with your **VM's SSH username** (the one you used in [SSH Into Your VM](#1--ssh-into-your-vm)):
+
+   ```ini
+   [Unit]
+   Description=frps
+   After=network.target
+
+   [Service]
+   ExecStart=/home/<username>/frp_0.63.0_linux_amd64/frps -c /home/<username>/frp_0.63.0_linux_amd64/frps.toml
+   Restart=always
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+4. To save and exit nano:
+
+   - Press `CTRL + X`
+   - Press `Y` to confirm saving
+   - Press `Enter` to finish
+
+### 2 | Enable and Start the systemd Service
+
+Run the following commands to enable and start the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable frps
+sudo systemctl start frps
+```
+
+Your **frps** server will now start automatically whenever the VM restarts.
 
 ## Important Links
 
