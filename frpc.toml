@@ -1,0 +1,31 @@
+serverAddr = "<ip-address-vm-instance>"
+serverPort = 7000
+
+auth.method = "token"
+auth.token = "<token>"
+
+webServer.addr = "127.0.0.1"
+webServer.port = 7500
+webServer.user = "<user>"
+webServer.password = "<password>"
+
+[[proxies]]
+name = "game1"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 7777
+remotePort = 7777
+
+[[proxies]]
+name = "game2"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 7778
+remotePort = 7778
+
+[[proxies]]
+name = "source-server"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 27015
+remotePort = 27015
