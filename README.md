@@ -8,13 +8,9 @@ A **strict NAT** assigns different external ports for each outgoing connection a
 
 This guide is for you if:
 
-- You want to host a dedicated Ark: Survival Ascended (ASA) server but are behind a **strict NAT** or otherwise **unable** to **port forward** to your local machine.
+- You want to host a dedicated Ark: Survival Ascended (ASA) server but are behind a **strict NAT** or otherwise **unable/unwilling** to **port forward** to your local machine.
 - You have a spare **Windows 10/11** laptop or computer available to run the ASA dedicated server on.
-- You have a **Google account** and a **Steam account**.
-
-## Setup Overview
-
-We will use **Google Cloud Compute Engine** to create a **Virtual Machine (VM)**, set up **[frp (Fast Reverse Proxy)](https://github.com/fatedier/frp)** to tunnel network traffic to your local machine and then set up the Ark: Survival Ascended dedicated server.
+- You have a **Google account**.
 
 ## Google Cloud Compute Setup
 
@@ -198,43 +194,67 @@ Your **frps** server will now start automatically whenever the VM restarts.
 
 ## Install and Run frp on Your Local Server
 
-In this section, we will install and configure **[frp](https://github.com/fatedier/frp)** on your **local machine**, where your Ark: Survival Ascended dedicated server will also run.
+In this section, we will install and configure **[frp (Fast Reverse Proxy)](https://github.com/fatedier/frp)** on your **local machine**.
+This will create a secure tunnel from your local computer to your Google Cloud VM.
+**Important:** The local machine must be the same computer where your Ark: Survival Ascended dedicated server will run.
 
-This will create a tunnel from your local machine to the Google Cloud VM.
+### 1 | Set Up a Common Directory
 
-### 1 | Download frp
+To automatically start both **frp** and the **Ark: Survival Ascended dedicated server** with a single `.bat` file, you need to organize your files in a **common directory structure**.
 
-1. Download **frp for Windows** from the official GitHub repository: [frp\_0.63.0\_windows\_amd64.zip](https://github.com/fatedier/frp/releases/download/v0.63.0/frp_0.63.0_windows_amd64.zip)
+Here is how your folder should look when finished:
 
-2. **Disable Windows Defender temporarily** or **whitelist the ZIP file** if it gets flagged as a virus.
-   (This can happen with some reverse proxy tools, but frp is open-source and widely trusted.)
+```
+<your-directory>
+   ├─ frp
+   ├─ steamcmd
+   ├─ ark
+   └─ start.bat
+```
 
-3. **Unzip** the file to your preferred directory and **delete the ZIP file** afterward.
+### 2 | Download frp (Client)
 
-### 2 | Set Up the Configuration
+1. Download **frp for Windows** from the official GitHub repository:
+   [frp\_0.63.0\_windows\_amd64.zip](https://github.com/fatedier/frp/releases/download/v0.63.0/frp_0.63.0_windows_amd64.zip)
 
-1. Open the `frpc.toml` file (the **client configuration**) using your preferred text editor.
+2. If your antivirus flags the ZIP as a virus:
+   *(This sometimes happens with reverse proxy tools. However, frp is open-source and widely trusted.)*
 
-2. Paste the contents of your prepared configuration file into the editor.
-   Make sure to replace:
+   * [Restore Quarantined Files](https://learn.microsoft.com/en-us/defender-endpoint/restore-quarantined-files-microsoft-defender-antivirus)
+   * [Add an Exclusion](https://support.microsoft.com/en-us/windows/virus-and-threat-protection-in-the-windows-security-app-1362f4cd-d71a-b52a-0b66-c2820032b65e)
 
-   - `<user>` with your generated username
-   - `<password>` with your generated password
-   - `<token>` with your generated token
+3. **Unzip** the file, **move** the extracted contents to: `<your-directory>\frp`
 
-   Use this template or download the official example here: **[frpc.toml](https://github.com/dreamfarer/asa-server/blob/main/frpc.toml)**
+4. After moving the files, **delete** the ZIP file to keep your directory clean.
 
-### 3 | Run frpc (Fast Reverse Proxy Client)
+### 3 | Set Up the Configuration
 
-1. Open **Command Prompt (cmd)** in the directory where you extracted **frpc**.
+1. Open the `frpc.toml` file (this is the **client configuration**) using any text editor (Notepad, VS Code, etc.).
 
-2. Run the following command to start **frpc** with your configuration:
+2. Paste the contents of the sample configuration:
+   [frpc.toml](https://github.com/dreamfarer/asa-server/blob/main/frpc.toml)
+
+3. Replace the placeholders in the file:
+
+   * `<user>` → Your generated frp dashboard username
+   * `<password>` → Your generated frp dashboard password
+   * `<token>` → Your generated frp token
+
+### 4 | Run frpc (Fast Reverse Proxy Client)
+
+1. Open **Command Prompt (cmd)** and navigate to the **frp folder**:
+
+   ```
+   cd <your-directory>\frp
+   ```
+
+2. Run the frp client:
 
    ```bash
    frpc.exe -c frpc.toml
    ```
 
-### 4 | Check the Setup (Optional)
+### 5 | Check the Setup (Optional)
 
 1. Make sure that both **frps** (on the VM instance) and **frpc** (on your local machine) are **running**.
 
@@ -250,8 +270,56 @@ This will create a tunnel from your local machine to the Google Cloud VM.
    * `game2`
    * `source-server`
 
-If **frps is not running**, the dashboard will show `No Data`.
+If frps is **not** running, the dashboard will show `No Data`.
 
-## Important Links
+## Install and Run the Ark: Survival Ascended Dedicated Server
 
-- [ARK: Survival Ascended Dedicated Server Setup Guide](https://ark.wiki.gg/wiki/Dedicated_server_setup)
+In this section, we will set up the **Ark: Survival Ascended dedicated server**.
+
+You are encouraged to read the official Ark Wiki’s guides:
+
+* [Dedicated Server Setup](https://ark.wiki.gg/wiki/Dedicated_server_setup)
+* [Server Configuration](https://ark.wiki.gg/wiki/Server_configuration)
+
+However, here is a **minimal working example** to get you started.
+
+### 1 | Install the Server
+
+1. Install **SteamCMD** by following this guide:
+   [SteamCMD Download and Installation Guide](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD)
+
+   Place **SteamCMD** in:
+
+   ```
+   <your-directory>\steamcmd
+   ```
+
+2. Open **Command Prompt (cmd)** and navigate to your **steamcmd** folder:
+
+   ```
+   cd <your-directory>\steamcmd
+   ```
+
+3. Run the following command to download the Ark server files.
+   Replace `<your-directory>\ark` with the **full path** to your `ark` folder.
+   Depending on your network speed, this may take several minutes.
+
+   ```bash
+   steamcmd +force_install_dir "<your-directory>\ark" +login anonymous +app_update 2430930 +quit
+   ```
+
+### 2 | Run the Ark: Survival Ascended Dedicated Server
+
+1. Open **Command Prompt (cmd)** and navigate to:
+
+   ```
+   <your-directory>\ark
+   ```
+
+2. Run the following command to start the Ark dedicated server with the **TheIsland** map:
+
+   ```bash
+   ArkAscendedServer.exe TheIsland_WP?SessionName=<session-name>?
+   ```
+
+   Replace `<session-name>` with the **server name** you want to appear in the **Ark server browser**. The server may take **1–5 minutes** to fully start, depending on your system.
