@@ -127,7 +127,7 @@ This will allow you to tunnel Ark server ports from your local machine through t
    nano frps.toml
    ```
 
-3. Paste the contents of [frps.toml](https://github.com/dreamfarer/asa-server/blob/main/frps.toml) into the editor.
+3. Paste the contents of [frps.toml](https://github.com/dreamfarer/ark-survival-ascended-server/blob/main/frps.toml) into the editor.
    Make sure to replace:
 
    - `<user>` with your generated username
@@ -215,7 +215,7 @@ Organize your server files like this:
 
 1. Open the `frpc.toml` client configuration file using any text editor.
 
-2. Paste the contents of [frpc.toml](https://github.com/dreamfarer/asa-server/blob/main/frpc.toml) into the editor.
+2. Paste the contents of [frpc.toml](https://github.com/dreamfarer/ark-survival-ascended-server/blob/main/frpc.toml) into the editor.
    Make sure to replace:
 
    - `<user>` with your generated username
@@ -310,12 +310,12 @@ However, here is a **minimal working example** to get you started.
 
 # Run frpc and the Ark: Survival Ascended Dedicated Server in One Click
 
-In this section, you will use **[start.bat](https://github.com/dreamfarer/asa-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
+In this section, you will use **[start.bat](https://github.com/dreamfarer/ark-survival-ascended-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
 
 > [!IMPORTANT]  
 > Make sure you have completed **all previous setup steps** before using this script.
 
-1. Download the **[start.bat script](https://github.com/dreamfarer/asa-server/blob/main/start.bat)**.
+1. Download the **[start.bat script](https://github.com/dreamfarer/ark-survival-ascended-server/blob/main/start.bat)**.
 2. Move `start.bat` into your `<your-directory>`.
 3. _(Optional)_
    Open `start.bat` with any text editor to customize the **Ark server startup parameters** according to the official [Server Configuration Guide](https://ark.wiki.gg/wiki/Server_configuration).
