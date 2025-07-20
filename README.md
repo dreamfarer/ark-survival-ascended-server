@@ -196,6 +196,62 @@ sudo systemctl start frps
 
 Your **frps** server will now start automatically whenever the VM restarts.
 
+## Install and Run frp on Your Local Server
+
+In this section, we will install and configure **[frp](https://github.com/fatedier/frp)** on your **local machine**, where your Ark: Survival Ascended dedicated server will also run.
+
+This will create a tunnel from your local machine to the Google Cloud VM.
+
+### 1 | Download frp
+
+1. Download **frp for Windows** from the official GitHub repository: [frp\_0.63.0\_windows\_amd64.zip](https://github.com/fatedier/frp/releases/download/v0.63.0/frp_0.63.0_windows_amd64.zip)
+
+2. **Disable Windows Defender temporarily** or **whitelist the ZIP file** if it gets flagged as a virus.
+   (This can happen with some reverse proxy tools, but frp is open-source and widely trusted.)
+
+3. **Unzip** the file to your preferred directory and **delete the ZIP file** afterward.
+
+### 2 | Set Up the Configuration
+
+1. Open the `frpc.toml` file (the **client configuration**) using your preferred text editor.
+
+2. Paste the contents of your prepared configuration file into the editor.
+   Make sure to replace:
+
+   - `<user>` with your generated username
+   - `<password>` with your generated password
+   - `<token>` with your generated token
+
+   Use this template or download the official example here: **[frpc.toml](https://github.com/dreamfarer/asa-server/blob/main/frpc.toml)**
+
+### 3 | Run frpc (Fast Reverse Proxy Client)
+
+1. Open **Command Prompt (cmd)** in the directory where you extracted **frpc**.
+
+2. Run the following command to start **frpc** with your configuration:
+
+   ```bash
+   frpc.exe -c frpc.toml
+   ```
+
+### 4 | Check the Setup (Optional)
+
+1. Make sure that both **frps** (on the VM instance) and **frpc** (on your local machine) are **running**.
+
+2. Open your browser on your **local machine** and go to:
+
+   ```
+   http://127.0.0.1:7500
+   ```
+
+3. In the **frp dashboard**, you should see the following **proxies running**:
+
+   * `game1`
+   * `game2`
+   * `source-server`
+
+If **frps is not running**, the dashboard will show `No Data`.
+
 ## Important Links
 
 - [ARK: Survival Ascended Dedicated Server Setup Guide](https://ark.wiki.gg/wiki/Dedicated_server_setup)
