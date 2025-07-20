@@ -15,10 +15,10 @@ This guide is for you if:
 ### Table of Contents
 
 1. [Set Up Google Cloud Compute Engine](#set-up-google-cloud-compute-engine)
-2. [Install and Run frp on Google Cloud VM](#install-and-run-frp-on-google-cloud-vm)
-3. [Install and Run frp on Your Local Machine](#install-and-run-frp-on-your-local-machine)
-4. [Install and Run the Ark: Survival Ascended Dedicated Server](#install-and-run-the-ark-survival-ascended-dedicated-server)
-5. [Run frpc and the Ark: Survival Ascended Dedicated Server in One Click](#run-frpc-and-the-ark-survival-ascended-dedicated-server-in-one-click)
+2. [Install and Run frp Server on Google Cloud](#install-and-run-frp-server-on-google-cloud)
+3. [Install and Run frp Client on Your Local Machine](#install-and-run-frp-client-on-your-local-machine)
+4. [Install and Run Ark: Survival Ascended Dedicated Server](#install-and-run-ark-survival-ascended-dedicated-server)
+5. [Run frpc and Ark: Survival Ascended Dedicated Server in One Click](#run-frpc-and-ark-survival-ascended-dedicated-server-in-one-click)
 
 # Set Up Google Cloud Compute Engine
 
@@ -88,7 +88,7 @@ In this section, you are going to create a new Google Cloud Compute Engine proje
 
 3. Click **"Create."**
 
-# Install and Run frp on Google Cloud VM
+# Install and Run frp Server on Google Cloud
 
 In this section, you will install and configure **[frp](https://github.com/fatedier/frp)** on your newly created **Google Cloud VM**.
 This will allow you to tunnel Ark server ports from your local machine through the cloud.
@@ -173,7 +173,7 @@ This will allow you to tunnel Ark server ports from your local machine through t
 
    Your frp server will now start automatically whenever the VM restarts.
 
-# Install and Run frp on Your Local Machine
+# Install and Run frp Client on Your Local Machine
 
 In this section, you will install and configure **[frp](https://github.com/fatedier/frp)** on your **local machine**.
 This will create a secure tunnel from your local computer to your Google Cloud VM.
@@ -256,7 +256,7 @@ Organize your server files like this:
 
 If frps is **not** running, the dashboard will show **No Data**.
 
-# Install and Run the Ark: Survival Ascended Dedicated Server
+# Install and Run Ark: Survival Ascended Dedicated Server
 
 In this section, you will set up the **Ark: Survival Ascended dedicated server**.
 
@@ -308,7 +308,7 @@ However, here is a **minimal working example** to get you started.
 
    Replace `<session-name>` with the server name you want to appear in the **Ark server browser**. The server may take **1–5 minutes** to fully start, depending on your system.
 
-# Run frpc and the Ark: Survival Ascended Dedicated Server in One Click
+# Run frpc and Ark: Survival Ascended Dedicated Server in One Click
 
 In this section, you will use **[start.bat](https://github.com/dreamfarer/ark-survival-ascended-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
 
