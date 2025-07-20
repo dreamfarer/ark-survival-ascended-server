@@ -1,0 +1,20 @@
+bindAddr = "0.0.0.0"
+bindPort = 7000
+
+webServer.addr = "127.0.0.1"
+webServer.port = 7500
+webServer.user = "<user>"
+webServer.password = "<password>"
+
+auth.method = "token"
+auth.token = "<token>"
+
+allowPorts = [
+{ single = 7777 },
+{ single = 27015 },
+{ single = 7778 }
+]
+
+log.to = "./frps.log"
+log.level = "info"
+log.maxDays = 3
