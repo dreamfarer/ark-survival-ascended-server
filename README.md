@@ -1,6 +1,8 @@
 # Hosting an Ark: Survival Ascended Dedicated Server Behind a Strict NAT
 
-This guide shows you how to setup a dedicated server for [Studio Wildcard](https://www.studiowildcard.com/)'s [Ark: Survival Ascended (ASA)](https://store.steampowered.com/app/2399830/ARK_Survival_Ascended/).
+This guide shows you how to **set up a dedicated server** for [Studio Wildcard](https://www.studiowildcard.com/)'s [Ark: Survival Ascended (ASA)](https://store.steampowered.com/app/2399830/ARK_Survival_Ascended/) when you are behind a strict NAT.
+
+A **strict NAT** assigns different external ports for each outgoing connection and blocks unsolicited inbound traffic. This is common with certain ISPs, making it impossible to host a server via direct port forwarding.
 
 ## Who Is This Guide For?
 
