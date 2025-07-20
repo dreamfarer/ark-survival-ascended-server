@@ -124,7 +124,7 @@ cd frp_0.63.0_linux_amd64
 
 3. Paste the contents of your prepared configuration file into the editor. Make sure to replace `<user>`, `<password>` and `<token>` with your generated values.
    Use this template or replace it with your own:
-   **[frps.toml](/link/to/frps.toml)**
+   **[frps.toml](https://github.com/dreamfarer/asa-server/blob/main/frps.toml)**
 
 4. To save and exit nano:
 
