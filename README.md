@@ -196,7 +196,9 @@ Your **frps** server will now start automatically whenever the VM restarts.
 
 In this section, we will install and configure **[frp (Fast Reverse Proxy)](https://github.com/fatedier/frp)** on your **local machine**.
 This will create a secure tunnel from your local computer to your Google Cloud VM.
-**Important:** The local machine must be the same computer where your Ark: Survival Ascended dedicated server will run.
+
+> **Important:**
+> The local machine must be the same computer where your Ark: Survival Ascended dedicated server will run.
 
 ### 1 | Set Up a Common Directory
 
@@ -283,7 +285,7 @@ You are encouraged to read the official Ark Wiki’s guides:
 
 However, here is a **minimal working example** to get you started.
 
-### 1 | Install the Server
+### 1 | Install the Ark: Survival Ascended Dedicated Server
 
 1. Install **SteamCMD** by following this guide:
    [SteamCMD Download and Installation Guide](https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD)
@@ -323,3 +325,23 @@ However, here is a **minimal working example** to get you started.
    ```
 
    Replace `<session-name>` with the **server name** you want to appear in the **Ark server browser**. The server may take **1–5 minutes** to fully start, depending on your system.
+
+## Run **frpc** and the **Ark: Survival Ascended Dedicated Server** in One Click
+
+In this section, we will use **[start.bat](https://github.com/dreamfarer/asa-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
+
+> **Important:**
+> Make sure you have completed **all previous setup steps** before using this script.
+
+**Important:** You need to have completed all sections before for this to work.
+
+1. Download the **[start.bat script](https://github.com/dreamfarer/asa-server/blob/main/start.bat)**.
+2. Move `start.bat` into your `<your-directory>`.
+3. *(Optional)*
+   Open `start.bat` with any text editor to customize the **Ark server startup parameters** according to the official [Server Configuration Guide](https://ark.wiki.gg/wiki/Server_configuration).
+4. Double-click `start.bat` to start both:
+
+   * **frpc** (the reverse proxy client)
+   * **Ark: Survival Ascended Dedicated Server**
+
+Both services will now run together with one click.
