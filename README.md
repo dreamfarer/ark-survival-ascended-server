@@ -1,6 +1,6 @@
 # How to Host an Ark: Survival Ascended Dedicated Server Behind a Strict NAT
 
-This guide shows you how to **host a dedicated [Ark: Survival Ascended](https://store.steampowered.com/app/2399830/ARK_Survival_Ascended/)server** when you are behind a **strict NAT**.
+This guide shows you how to **host a dedicated [Ark: Survival Ascended](https://store.steampowered.com/app/2399830/ARK_Survival_Ascended/) server** when you are behind a **strict NAT**.
 
 A **strict NAT** assigns different external ports for each outgoing connection and blocks unsolicited inbound traffic. This is common with certain ISPs, making it impossible to host a server via direct port forwarding. To work around it, you'll use **Google Cloud Compute + frp (Fast Reverse Proxy)** to tunnel traffic to your local machine.
 
@@ -21,7 +21,7 @@ This guide is for you if:
 
 # Set Up Google Cloud Compute Engine
 
-In this section, we are going to create a new Google Cloud Compute Engine project, add a VM instance and setup [frp](https://github.com/fatedier/frp).
+In this section, you are going to create a new Google Cloud Compute Engine project, add a VM instance and setup [frp](https://github.com/fatedier/frp).
 
 ### 1 | Create a New Google Cloud Project
 
@@ -89,7 +89,7 @@ In this section, we are going to create a new Google Cloud Compute Engine projec
 
 # Install and Run frp on Google Cloud VM
 
-In this section, we will install and configure **[frp](https://github.com/fatedier/frp)** on your newly created **Google Cloud VM**.
+In this section, you will install and configure **[frp](https://github.com/fatedier/frp)** on your newly created **Google Cloud VM**.
 This will allow you to tunnel Ark server ports from your local machine through the cloud.
 
 ### 1 | Download frp
@@ -174,7 +174,7 @@ This will allow you to tunnel Ark server ports from your local machine through t
 
 # Install and Run frp on Your Local Machine
 
-In this section, we will install and configure **[frp](https://github.com/fatedier/frp)** on your **local machine**.
+In this section, you will install and configure **[frp](https://github.com/fatedier/frp)** on your **local machine**.
 This will create a secure tunnel from your local computer to your Google Cloud VM.
 
 > [!IMPORTANT]  
@@ -255,9 +255,9 @@ Organize your server files like this:
 
 If frps is **not** running, the dashboard will show **No Data**.
 
-## Install and Run the Ark: Survival Ascended Dedicated Server
+# Install and Run the Ark: Survival Ascended Dedicated Server
 
-In this section, we will set up the **Ark: Survival Ascended dedicated server**.
+In this section, you will set up the **Ark: Survival Ascended dedicated server**.
 
 You are encouraged to use the official Ark Wiki’s guides:
 
@@ -307,9 +307,9 @@ However, here is a **minimal working example** to get you started.
 
    Replace `<session-name>` with the server name you want to appear in the **Ark server browser**. The server may take **1–5 minutes** to fully start, depending on your system.
 
-## Run **frpc** and the **Ark: Survival Ascended Dedicated Server** in One Click
+# Run frpc and the Ark: Survival Ascended Dedicated Server in One Click
 
-In this section, we will use **[start.bat](https://github.com/dreamfarer/asa-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
+In this section, you will use **[start.bat](https://github.com/dreamfarer/asa-server/blob/main/start.bat)** to start both **frpc** (the Fast Reverse Proxy client) and your **Ark: Survival Ascended Dedicated Server** with a single click.
 
 > [!IMPORTANT]  
 > Make sure you have completed **all previous setup steps** before using this script.
